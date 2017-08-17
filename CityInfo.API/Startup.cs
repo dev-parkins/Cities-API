@@ -22,13 +22,12 @@ namespace CityInfo.API
                     new XmlDataContractSerializerOutputFormatter()) //Add Output Serializer for Accept:xml/application
             );
 
-            //removes camelcasing from return objects
             //.AddJsonOptions(o =>
             //{
             //    if (o.SerializerSettings.ContractResolver != null)
             //    {
             //        var castedResolver = o.SerializerSettings.ContractResolver as DefaultContractResolver;
-            //        castedResolver.NamingStrategy = null; 
+            //        castedResolver.NamingStrategy = null; //removes camelcasing from return objects
             //    }
             //});
         }
