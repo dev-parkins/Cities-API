@@ -20,7 +20,7 @@ namespace CityInfo.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetCity(int id)
         {
-            CityDto result = CitiesDataStore.Current.Cities.FirstOrDefault(dto => dto.Id == id);
+            var result = CitiesDataStore.Current.Cities.FirstOrDefault(dto => dto.Id == id);
 
             if (result == null)
                 return NotFound();
