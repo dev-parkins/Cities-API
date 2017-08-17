@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CityInfo.API.Models;
 using Microsoft.AspNetCore.Mvc;
 namespace CityInfo.API.Controllers
 {
@@ -9,16 +10,21 @@ namespace CityInfo.API.Controllers
     {
 
         [HttpGet]
-        public JsonResult GetCities()
+        public IActionResult GetCities()
         {
-            return new JsonResult(CitiesDataStore.Current.Cities);
+            return Ok(CitiesDataStore.Current.Cities);
         }
 
         //[HttpGet("api/cities/{id}")] //Since we defined Route at Class-level, can just use last part of URI
         [HttpGet("{id}")]
-        public JsonResult GetCity(int id)
+        public IActionResult GetCity(int id)
         {
-            return new JsonResult(CitiesDataStore.Current.Cities.FirstOrDefault(dto => dto.Id == id));
+            CityDto result = CitiesDataStore.Current.Cities.FirstOrDefault(dto => dto.Id == id);
+
+            if (result == null)
+                return NotFound();
+
+            return Ok(result);
         }
     }
 }
