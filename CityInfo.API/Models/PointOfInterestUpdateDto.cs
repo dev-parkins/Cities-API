@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CityInfo.API.Models
 {
-    public class PointOfInterestCreateDto
+    public class PointOfInterestUpdateDto
     {
         [Required(ErrorMessage = "Name property is required.")]
         [MaxLength(50)]
