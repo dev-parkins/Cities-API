@@ -1,0 +1,23 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/CityInfo.API/obj/Debug/netcoreapp2.0/CityInfo.API.pdb
+/CityInfo.API/obj/Debug/netcoreapp2.0/CityInfo.API.dll
+/CityInfo.API/obj/Debug/netcoreapp2.0/CityInfo.API.csprojResolveAssemblyReference.cache
+/CityInfo.API/obj/Debug/netcoreapp2.0/CityInfo.API.csproj.FileListAbsolute.txt
+/CityInfo.API/obj/Debug/netcoreapp2.0/CityInfo.API.csproj.CoreCompileInputs.cache
+/CityInfo.API/obj/Debug/netcoreapp2.0/CityInfo.API.AssemblyInfoInputs.cache
+/CityInfo.API/obj/Debug/netcoreapp2.0/CityInfo.API.AssemblyInfo.cs
+/CityInfo.API/obj/Release/netcoreapp2.0/CityInfo.API.pdb
+/CityInfo.API/obj/Release/netcoreapp2.0/CityInfo.API.dll
+/CityInfo.API/obj/Release/netcoreapp2.0/CityInfo.API.csproj.FileListAbsolute.txt
+/CityInfo.API/obj/Release/netcoreapp2.0/CityInfo.API.csproj.CoreCompileInputs.cache
+/CityInfo.API/obj/Release/netcoreapp2.0/CityInfo.API.AssemblyInfoInputs.cache
+/CityInfo.API/obj/Release/netcoreapp2.0/CityInfo.API.AssemblyInfo.cs
+/CityInfo.API/obj/project.assets.json
+/CityInfo.API/obj/CityInfo.API.csproj.nuget.g.targets
+/CityInfo.API/obj/CityInfo.API.csproj.nuget.g.props
+/CityInfo.API/obj/CityInfo.API.csproj.nuget.cache
+/CityInfo.API/bin/Debug/netcoreapp2.0
+/CityInfo.API/bin/Release/netcoreapp2.0
