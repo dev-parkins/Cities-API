@@ -8,9 +8,9 @@ namespace CityInfo.API.Services
 {
     public class LocalMailService : IMailService
     {
-        private const string _mailTo = "admin@testcompany.com"; //TODO: add to config file
-        private const string _mailFrom = "noreply@testcompany.com"; //TODO: add to config file
-
+        private readonly string _mailFrom = Startup.Configuration["mailSettings:mailFromAddress"];
+        private readonly string _mailTo = Startup.Configuration["mailSettings:mailToAddress"];
+        
         public void Send(string subject, string message)
         {
             Debug.WriteLine($"Mail from {_mailFrom} to {_mailTo}, with LocalMailService");
