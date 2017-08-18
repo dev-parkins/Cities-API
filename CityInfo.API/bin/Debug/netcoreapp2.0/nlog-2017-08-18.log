@@ -1,0 +1,12 @@
+2017-08-18 10:31:13.7593|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:51441/api/cities/9/pointsofinterest  
+2017-08-18 10:31:14.0461|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) with arguments (9) - ModelState is Valid
+2017-08-18 10:31:14.0774|INFO|CityInfo.API.Controllers.PointsOfInterestController|Invalid city id 9 passed to GetPointOfInterest.
+2017-08-18 10:31:14.0897|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 404
+2017-08-18 10:31:14.1475|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) in 129.4522ms
+2017-08-18 10:31:14.1586|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 426.8256ms 404 text/plain
+2017-08-18 10:31:43.8506|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:51441/api/cities/9/pointsofinterest  
+2017-08-18 10:31:43.8778|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) with arguments (9) - ModelState is Valid
+2017-08-18 10:31:48.6555|INFO|CityInfo.API.Controllers.PointsOfInterestController|Invalid city id 9 passed to GetPointOfInterest.
+2017-08-18 10:31:50.5419|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 404
+2017-08-18 10:31:50.5673|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) in 6689.9961ms
+2017-08-18 10:31:50.5935|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 6743.1898ms 404 text/plain
