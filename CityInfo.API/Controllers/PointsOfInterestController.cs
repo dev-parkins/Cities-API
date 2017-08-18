@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using CityInfo.API.Models;
+using CityInfo.API.Services;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -15,11 +16,12 @@ namespace CityInfo.API.Controllers
     public class PointsOfInterestController : Controller
     {
         private readonly ILogger<PointsOfInterestController> _logger;
+        private readonly IMailService _mailService;
 
-        public PointsOfInterestController(ILogger<PointsOfInterestController> logger)
+        public PointsOfInterestController(ILogger<PointsOfInterestController> logger, IMailService mailService)
         {
             _logger = logger;
-            //HttpContext.RequestServices.GetService(typeof(ILogger<PointsOfInterestController>)); //Can use this instead of constructor, but not recommended
+            _mailService = mailService;
         }
 
         [HttpGet("{cityId}/pointsofinterest")]
@@ -176,7 +178,7 @@ namespace CityInfo.API.Controllers
                 return NotFound();
 
             city.PointsOfInterest.Remove(storePoi);
-
+            _mailService.Send("Point of interest deletion.", $"Point of interest {storePoi.Name} (id:{storePoi.Id} was deleted.");
             return NoContent();
         }
     }

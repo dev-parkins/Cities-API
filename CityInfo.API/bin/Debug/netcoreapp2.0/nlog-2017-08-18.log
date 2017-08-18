@@ -10,3 +10,15 @@
 2017-08-18 10:31:50.5419|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 404
 2017-08-18 10:31:50.5673|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) in 6689.9961ms
 2017-08-18 10:31:50.5935|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 6743.1898ms 404 text/plain
+2017-08-18 10:45:31.6456|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DELETE http://localhost:51441/api/cities/1/pointsofinterest/1  0
+2017-08-18 10:45:31.9179|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API) with arguments (1, 1) - ModelState is Valid
+2017-08-18 10:46:13.1095|WARN|Microsoft.AspNetCore.Server.Kestrel|Heartbeat took longer than "00:00:01" at "08/18/2017 17:46:00 +00:00".
+2017-08-18 10:46:13.1383|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 204
+2017-08-18 10:46:13.1754|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API) in 41264.3081ms
+2017-08-18 10:46:13.1881|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 41590.7299ms 204 
+2017-08-18 11:08:27.3926|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DELETE http://localhost:51441/api/cities/1/pointsofinterest/1  0
+2017-08-18 11:08:27.6798|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API) with arguments (1, 1) - ModelState is Valid
+2017-08-18 11:08:46.2185|WARN|Microsoft.AspNetCore.Server.Kestrel|Heartbeat took longer than "00:00:01" at "08/18/2017 18:08:36 +00:00".
+2017-08-18 11:08:46.2496|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 204
+2017-08-18 11:08:46.2843|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API) in 18646.703ms
+2017-08-18 11:08:46.3168|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 18951.0122ms 204 
