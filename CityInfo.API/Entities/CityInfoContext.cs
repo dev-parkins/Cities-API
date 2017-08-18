@@ -13,14 +13,7 @@ namespace CityInfo.API.Entities
 
         public CityInfoContext(DbContextOptions<CityInfoContext> opts) : base(opts)
         {
-            Database.EnsureCreated();
+            Database.Migrate(); //similar to tooling Update-Database command
         }
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder optsBuilder)
-        //{
-        //    optsBuilder.UseSqlServer("connectionString");
-
-        //    base.OnConfiguring(optsBuilder);
-        //}
     }
 }
