@@ -21,3 +21,4 @@
 /CityInfo.API/obj/CityInfo.API.csproj.nuget.cache
 /CityInfo.API/bin/Debug/netcoreapp2.0
 /CityInfo.API/bin/Release/netcoreapp2.0
+/.vs
