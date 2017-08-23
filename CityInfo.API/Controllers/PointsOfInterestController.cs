@@ -110,16 +110,16 @@ namespace CityInfo.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
-            if (city == null)
+            if (!_cityInfoRepo.CityExists(cityId))
                 return NotFound();
 
-            var storePoi = city.PointsOfInterest.FirstOrDefault(p => p.Id == id);
-            if (storePoi == null)
+            var poi = _cityInfoRepo.GetPointOfInterestForCity(cityId, id);
+            if (poi == null)
                 return NotFound();
 
-            storePoi.Name = pointOfInterest.Name;
-            storePoi.Description = pointOfInterest.Description;
+            Mapper.Map(pointOfInterest, poi);
+            if (!_cityInfoRepo.Save())
+                return StatusCode(500, "A problem occurred when processing your request.");
 
             return NoContent();
         }
