@@ -17,46 +17,64 @@ namespace CityInfo.API.Controllers
     {
         private readonly ILogger<PointsOfInterestController> _logger;
         private readonly IMailService _mailService;
+        private ICityInfoRepository _cityInfoRepo;
 
-        public PointsOfInterestController(ILogger<PointsOfInterestController> logger, IMailService mailService)
+
+        public PointsOfInterestController(ILogger<PointsOfInterestController> logger
+            , IMailService mailService
+            , ICityInfoRepository cityInfoRepo)
         {
             _logger = logger;
             _mailService = mailService;
+            _cityInfoRepo = cityInfoRepo;
         }
 
         [HttpGet("{cityId}/pointsofinterest")]
         public IActionResult GetPointsOfInterest(int cityId)
         {
-            try
+            if (!_cityInfoRepo.CityExists(cityId))
             {
-                var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
-                if (city == null)
-                {
-                    _logger.LogInformation($"Invalid city id {cityId} passed to GetPointOfInterest.");
-                    return NotFound();
-                }
+                _logger.LogInformation($"Invalid city id {cityId} passed to GetPointsOfInterest.");
+                return NotFound();
+            }
 
-                return Ok(city.PointsOfInterest);
-            }
-            catch (Exception ex)
+            var pointsOfInterestForCity = _cityInfoRepo.GetPointsOfInterestForCity(cityId);
+
+            var poiForCityResults = new List<PointOfInterestDto>();
+            foreach(var poi in pointsOfInterestForCity)
             {
-                _logger.LogCritical($"Exception while getting points of interest for city id {cityId}", ex);
-                return StatusCode(500, "A problem occurred while processing your request.");
+                poiForCityResults.Add(new PointOfInterestDto()
+                {
+                    Id = poi.Id,
+                    Name = poi.Name,
+                    Description = poi.Description
+                });
             }
+
+            return Ok(poiForCityResults);
         }
 
         [HttpGet("{cityId}/pointsofinterest/{id}", Name = "GetPointOfInterest")]
         public IActionResult GetPointOfInterest(int cityId, int id)
         {
-            var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
-            if (city == null)
+            if (!_cityInfoRepo.CityExists(cityId))
+            {
+                _logger.LogInformation($"Invalid city id {cityId} passed to GetPointOfInterest.");
                 return NotFound();
+            }
 
-            var poi = city.PointsOfInterest.FirstOrDefault(p => p.Id == id);
-            if (poi == null)
-                return NotFound();
+            var poi = _cityInfoRepo.GetPointOfInterestForCity(cityId, id);
 
-            return Ok(poi);
+            if (poi == null) return NotFound();
+
+            var poiResult = new PointOfInterestDto()
+            {
+                Id = poi.Id,
+                Name = poi.Name,
+                Description = poi.Description
+            };
+
+            return Ok(poiResult);
         }
 
         [HttpPost("{cityId}/pointsofinterest")]
