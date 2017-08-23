@@ -131,36 +131,31 @@ namespace CityInfo.API.Controllers
             if (patchDocument == null)
                 return BadRequest();
 
-            var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
-            if (city == null)
+            if (!_cityInfoRepo.CityExists(cityId))
                 return NotFound();
 
-            var storePoi = city.PointsOfInterest.FirstOrDefault(p => p.Id == id);
-            if (storePoi == null)
-                return NotFound();
+            var poiEntity = _cityInfoRepo.GetPointOfInterestForCity(cityId, id);
+            if (poiEntity == null)
+                NotFound();
 
-            var storePoiToPatch =
-                new PointOfInterestUpdateDto()
-                {
-                    Name = storePoi.Name,
-                    Description = storePoi.Description
-                };
+            var poiToPatch = Mapper.Map<PointOfInterestUpdateDto>(poiEntity);
 
-            patchDocument.ApplyTo(storePoiToPatch, ModelState);
+            patchDocument.ApplyTo(poiToPatch, ModelState);
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            if (storePoiToPatch.Name?.Contains("Trump") == true)
+            if (poiToPatch.Name?.Contains("Trump") == true)
                 ModelState.AddModelError("Name", "Contains SAD man's name - SAD");
 
-            TryValidateModel(storePoiToPatch);
+            TryValidateModel(poiToPatch);
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            storePoi.Name = storePoiToPatch.Name;
-            storePoi.Description = storePoiToPatch.Description;
+            Mapper.Map(poiToPatch, poiEntity);
+            if(!_cityInfoRepo.Save())
+                return StatusCode(500, "A problem occurred when processing your request.");
 
             return NoContent();
         }
