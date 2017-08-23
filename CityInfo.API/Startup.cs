@@ -67,7 +67,7 @@ namespace CityInfo.API
                 app.UseExceptionHandler();
             }
 
-            //cityInfoContext.EnsureSeedDataForContext(); // seeds test data
+            cityInfoContext.EnsureSeedDataForContext(); // seeds test data
 
             app.UseStatusCodePages();
             app.UseMvc();
