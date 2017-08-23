@@ -1,11 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using CityInfo.API.Entities;
+using EfCore.Shaman;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 
 namespace CityInfo.API.Migrations
 {
-    public partial class CityInfoDBInitialMigration : Migration
+    public partial class InitialCreation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,6 +32,7 @@ namespace CityInfo.API.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CityId = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -47,6 +50,8 @@ namespace CityInfo.API.Migrations
                 name: "IX_PointsOfInterest_CityId",
                 table: "PointsOfInterest",
                 column: "CityId");
+
+            migrationBuilder.FixMigrationUp<CityInfoContext>();
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

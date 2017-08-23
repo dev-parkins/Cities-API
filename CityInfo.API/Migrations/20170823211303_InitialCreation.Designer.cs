@@ -11,8 +11,8 @@ using System;
 namespace CityInfo.API.Migrations
 {
     [DbContext(typeof(CityInfoContext))]
-    [Migration("20170818223038_CityInfoDBInitialMigration")]
-    partial class CityInfoDBInitialMigration
+    [Migration("20170823211303_InitialCreation")]
+    partial class InitialCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,6 +44,9 @@ namespace CityInfo.API.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("CityId");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(200);
 
                     b.Property<string>("Name")
                         .IsRequired()

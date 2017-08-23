@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EfCore.Shaman;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,11 @@ namespace CityInfo.API.Entities
         public CityInfoContext(DbContextOptions<CityInfoContext> opts) : base(opts)
         {
             Database.Migrate(); //similar to tooling Update-Database command
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            this.FixOnModelCreating(modelBuilder, ShamanOptions.Default.WithSqlServer());
         }
     }
 }
