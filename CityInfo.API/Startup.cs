@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 using NLog.Extensions.Logging;
 using NLog.Web;
+using CityInfo.API.Models;
 using CityInfo.API.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -72,6 +73,15 @@ namespace CityInfo.API
             cityInfoContext.EnsureSeedDataForContext(); // seeds test data
 
             app.UseStatusCodePages();
+
+            AutoMapper.Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<City, CityWithoutPOITDto>();
+                cfg.CreateMap<City, CityDto>();
+                cfg.CreateMap<PointOfInterest, PointOfInterestDto>();
+                cfg.CreateMap<PointOfInterestCreateDto, PointOfInterest>();
+            });
+
             app.UseMvc();
         }
     }

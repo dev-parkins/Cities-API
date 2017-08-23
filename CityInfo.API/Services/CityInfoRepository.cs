@@ -47,5 +47,16 @@ namespace CityInfo.API.Services
             return _context.PointsOfInterest
                 .Where(p => p.CityId == cityId).ToList();
         }
+
+        public void AddPointOfInterestForCity(int cityId, PointOfInterest poi)
+        {
+            var city = GetCity(cityId, false);
+            city.PointsOfInterest.Add(poi);
+        }
+
+        public bool Save()
+        {
+            return (_context.SaveChanges() >= 0);
+        }
     }
 }
