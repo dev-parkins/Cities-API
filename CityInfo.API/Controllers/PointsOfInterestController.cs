@@ -125,8 +125,9 @@ namespace CityInfo.API.Controllers
         }
 
         [HttpPatch("{cityId}/pointsofinterest/{id}")]
-        public IActionResult PatchPointOfInterest(int cityId, int id,
-            [FromBody] JsonPatchDocument<PointOfInterestUpdateDto> patchDocument)
+        public IActionResult PatchPointOfInterest(int cityId
+            , int id
+            , [FromBody] JsonPatchDocument<PointOfInterestUpdateDto> patchDocument)
         {
             if (patchDocument == null)
                 return BadRequest();
